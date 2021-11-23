@@ -3,6 +3,7 @@ import iushlogo from "./iushlogo.png";
 import "./App.css";
 import UserWindow from "./component/userWindow";
 import UserList from "./component/UserList";
+import Parameters from "./component/parameters";
 
 //Crear contexto para uso con los componentes hijos.
 export const genContext = createContext();
@@ -84,6 +85,7 @@ function App() {
         </div>
         {userInput && <UserWindow></UserWindow>}
         {clientList && <UserList></UserList>}
+        <Parameters></Parameters>
       </div>
     </genContext.Provider>
   );
