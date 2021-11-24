@@ -119,8 +119,10 @@ h1 {
 }
 
 #btnLine {
-  justify-content: flex-end;
+  justify-content: center;
 }
+
+
 
 #btnLine button {
   height: 2rem;
@@ -129,7 +131,9 @@ h1 {
   border-radius: 4px;
   color: white;
   margin: 4px;
-  background-color: rgb(110, 67, 128);
+  background-color: rgb(45, 47, 136);
   font-size: 1.3rem;
   font-weight: bold;
 }
+
+

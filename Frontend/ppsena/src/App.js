@@ -4,6 +4,7 @@ import "./App.css";
 import UserWindow from "./component/userWindow";
 import UserList from "./component/UserList";
 import Parameters from "./component/parameters";
+import  Cotizacion  from "./component/cotizacion";
 
 //Crear contexto para uso con los componentes hijos.
 export const genContext = createContext();
@@ -12,6 +13,7 @@ function App() {
   //Estados para abrir y cerrar las diferentes ventanas
   const [userInput, setUserInput] = useState(false); // Estado para crear nuevo usuario
   const [clientList, setclientList] = useState(false);
+  const [nombre,setNombre]= useState()
 
   //para abrir o cerrar la ventana de nuevo usuario
   const toogleClient = (e) => {
@@ -26,6 +28,11 @@ function App() {
     setclientList(!clientList);
     console.log("UserList");
   };
+
+  //cambia el nombre
+  const nombrehappy = (e) => {
+    setNombre(e.target.value)
+  }
 
   const value = { toogleClient, toogleClientList };
 
@@ -58,34 +65,125 @@ function App() {
                 </button>
               </div>
               <div className="inputLine">
-                <label>Titulo de Cliente: </label>
-                <select className="input-group">
-                  <option value="new1">Nuevo Cliente</option>
-                </select>
+                <label>Docencia: </label>
+                <input onChange={e=>nombrehappy(e)}></input>
               </div>
               <div className="inputLine">
-                <label>Nombre de Usuario: </label>
+                <label>Desarrollo de Contenido: </label>
                 <input></input>
               </div>
               <div className="inputLine">
-                <label>Titulo de Cliente: </label>
+                <label>Coordinacion administrativa: </label>
                 <input></input>
               </div>
               <div className="inputLine">
-                <label>Nombre de Usuario: </label>
+                <label>Coordinacion academica (decano): </label>
                 <input></input>
               </div>
               <div className="inputLine">
-                <label>Nombre de Usuario: </label>
+                <label>Coordinacion academica (Coordinador): </label>
                 <input></input>
               </div>
+              <div className="inputLine">
+                <label>Cartera: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Mercadeo y Ventas: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Administrativo Documental CAD: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Cultivo de talento humano: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Apoyo academico: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Juridica: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Vicerrectoria de planeacion y desarollo Organizacional </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Gestion Financiera, contable y tesoreria (Vicerrectoria Administrativa y Financieras) </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Gestion Financiera, contable y tesoreria (Contador 1) </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Gestion Financiera, contable y tesoreria (Contador 2) </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Gestion Financiera, contable y tesoreria (Auxiliar Contable) </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Gestion Financiera, contable y tesoreria (Tesoreria) </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Aula por Teams</label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Aula de sistemas</label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Aula sencilla</label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Aula postgrado (Especiales): </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Auditorio: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Publicidad </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Costo certificion: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Transporte y alimentación: </label>
+                <input></input>
+              </div>
+              <div className="inputLine">
+                <label>Refrigerios: </label>
+                <input></input>
+              </div>
+              <div className="inputLine" id="btnLine">
+                <button onClick={(e) => toogleClient(e)}>
+                  {" "}
+                  + Agregar Parametro{" "}
+                </button>
+                <h1>{nombre}</h1>
+              </div>
+
             </form>
           </div>
           <div className=" rightmaincol col-4  p-0"></div>
         </div>
         {userInput && <UserWindow></UserWindow>}
         {clientList && <UserList></UserList>}
-        <Parameters></Parameters>
+        
+        
       </div>
     </genContext.Provider>
   );
