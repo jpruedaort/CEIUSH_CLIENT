@@ -94,7 +94,6 @@ h1 {
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .inputLine label {
@@ -103,6 +102,7 @@ h1 {
   justify-content: start;
   margin-top: 3px;
   margin-bottom: 3px;
+  overflow-wrap: break-word;
 }
 
 .inputLine input {
@@ -122,8 +122,6 @@ h1 {
   justify-content: center;
 }
 
-
-
 #btnLine button {
   height: 2rem;
   width: 10rem;
@@ -136,4 +134,57 @@ h1 {
   font-weight: bold;
 }
 
+.divider {
+  border-top: solid;
+  border-color: rgb(45, 47, 136);
+  margin: 0;
+  padding: 0;
+}
 
+.groupnames {
+  font-size: 15px;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.groupnames h2 {
+  display: flex;
+  color: rgb(45, 47, 136);
+  margin: 0;
+  font-weight: bold;
+}
+
+.totalcost {
+  position: sticky;
+  top: 20px;
+  margin-top: 2rem;
+  background: rgb(45, 47, 136);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  font-family: "Jost", sans-serif;
+  width: 70%;
+  height: 120px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.totalcost h3 {
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+.rightmaincol {
+  display: flex;
+  justify-content: center;
+}
+
+.rightmaincol button {
+  border-color: white;
+  background-color: transparent;
+  color: white;
+  border-radius: 4px;
+}
