@@ -38,7 +38,7 @@ h1 {
 
 .leftmaincol {
   border-radius: 0.5rem;
-  background-color: rgba(219, 219, 219, 0.2);
+  background-color: white;
 }
 
 .leftmaincol h3 {
@@ -106,9 +106,10 @@ h1 {
 }
 
 .inputLine input {
-  width: 50%;
+  max-width: 300px;
   background-color: rgb(212, 166, 202);
   border: none;
+  text-align: end;
 }
 
 .inputLine select {
@@ -164,22 +165,26 @@ h1 {
   border-top-right-radius: 7px;
   font-family: "Jost", sans-serif;
   width: 70%;
-  height: 120px;
+  height: 20rem;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .totalcost h3 {
   font-weight: 100;
   font-size: 1rem;
+  width: 100%;
 }
 
 .rightmaincol {
   display: flex;
   justify-content: center;
+  background-color: white;
+  margin-top: 2rem;
 }
 
 .rightmaincol button {
