@@ -167,113 +167,149 @@ function App() {
               <div className="divider">
                 <div className="inputLine">
                   <label>Docencia: </label>
-                  <input
-                    name="docencia"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="docencia"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Desarrollo de Contenido: </label>
-                  <input
-                    name="desarrollo"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="desarrollo"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Coordinacion administrativa: </label>
-                  <input
-                    name="coordinacion"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="coordinacion"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Coordinacion academica (decano): </label>
-                  <input
-                    name="coordinaciod"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="coordinaciod"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Coordinacion academica (Coordinador): </label>
-                  <input
-                    name="coordinacioc"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="coordinacioc"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Cartera: </label>
-                  <input
-                    name="cartera"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="cartera"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Mercadeo y Ventas: </label>
-                  <input
-                    name="mercadeo"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="mercadeo"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Administrativo Documental CAD: </label>
-                  <input
-                    name="administrativo"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="administrativo"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Cultivo de talento humano: </label>
-                  <input
-                    name="cultivo"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="cultivo"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Apoyo academico: </label>
-                  <input
-                    name="apoyo"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="apoyo"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Juridica: </label>
-                  <input
-                    name="juridica"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="juridica"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>
                     Vicerrectoria de planeacion y desarollo Organizacional{" "}
                   </label>
-                  <input
-                    name="vice"
-                    type="number"
-                    onChange={(e) => handleChangeBasico(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="vice"
+                      type="number"
+                      onChange={(e) => handleChangeBasico(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
               </div>
               <div className="groupnames">
@@ -282,49 +318,64 @@ function App() {
               <div className="divider">
                 <div className="inputLine">
                   <label>Vicerrectoria Administrativa y Financieras: </label>
-                  <input
-                    name="vicea"
-                    type="number"
-                    onChange={(e) => handleChangeGestion(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="vicea"
+                      type="number"
+                      onChange={(e) => handleChangeGestion(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
 
                 <div className="inputLine">
                   <label>Contador 1: </label>
-                  <input
-                    name="cont1"
-                    type="number"
-                    onChange={(e) => handleChangeGestion(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="cont1"
+                      type="number"
+                      onChange={(e) => handleChangeGestion(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Contador 2: </label>
-                  <input
-                    name="cont2"
-                    type="number"
-                    onChange={(e) => handleChangeGestion(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="cont2"
+                      type="number"
+                      onChange={(e) => handleChangeGestion(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Auxiliar Contable: </label>
-                  <input
-                    name="aux"
-                    type="number"
-                    onChange={(e) => handleChangeGestion(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="aux"
+                      type="number"
+                      onChange={(e) => handleChangeGestion(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Tesoreria: </label>
-                  <input
-                    name="tesoreria"
-                    type="number"
-                    onChange={(e) => handleChangeGestion(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="tesoreria"
+                      type="number"
+                      onChange={(e) => handleChangeGestion(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
               </div>
               <div className="groupnames">
@@ -333,84 +384,111 @@ function App() {
               <div className="divider">
                 <div className="inputLine">
                   <label>Aula por Teams</label>
-                  <input
-                    name="aulaTeams"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="aulaTeams"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Aula de sistemas</label>
-                  <input
-                    name="aulasist"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="aulasist"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Aula sencilla</label>
-                  <input
-                    name="aulasencilla"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="aulasencilla"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Aula postgrado (Especiales): </label>
-                  <input
-                    name="aulapost"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="aulapost"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Auditorio: </label>
-                  <input
-                    name="auditorio"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="auditorio"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Publicidad </label>
-                  <input
-                    name="publicidad"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="publicidad"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Costo certificion: </label>
-                  <input
-                    name="costocert"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="costocert"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Transporte y alimentación: </label>
-                  <input
-                    name="transport"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="transport"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
                 <div className="inputLine">
                   <label>Refrigerios: </label>
-                  <input
-                    name="refri"
-                    type="number"
-                    onChange={(e) => handleChangeOtros(e)}
-                    placeholder="0"
-                  ></input>
+                  <div className="boxpart">
+                    <input
+                      name="refri"
+                      type="number"
+                      onChange={(e) => handleChangeOtros(e)}
+                      placeholder="0"
+                    ></input>
+                    <h7>minutos</h7>
+                  </div>
                 </div>
               </div>
               <div className="inputLine" id="btnLine">
@@ -423,12 +501,11 @@ function App() {
           </div>
           <div className=" rightmaincol col-4  p-0">
             <div className="totalcost">
-              <h2>Costo:</h2>
               <h3>Basicos: {sumtotalBasicos} COP</h3>
               <h3>Gestion: {sumtotalGestion} COP </h3>
               <h3>Otros: {sumtotalOtros} COP</h3>
               <br />
-              <h3>Total:</h3>
+              <h3 id="total">Total:</h3>
               <h2>{sumtotalBasicos + sumtotalGestion + sumtotalOtros}</h2>
               <h2>COP</h2>
               <button> Genera Cotizacion</button>
