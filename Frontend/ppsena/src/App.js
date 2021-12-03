@@ -4,6 +4,7 @@ import "./App.css";
 import UserWindow from "./component/userWindow";
 import UserList from "./component/UserList";
 import Cotizacion from "./component/cotizacion";
+import Parametros from "./component/parametros";
 
 //Crear contexto para uso con los componentes hijos.
 export const genContext = createContext();
@@ -12,56 +13,56 @@ function App() {
   //Estados para abrir y cerrar las diferentes ventanas
   const [userInput, setUserInput] = useState(false); // Estado para crear nuevo usuario
   const [clientList, setclientList] = useState(false);
+  const [paramWindow, setParamWindows] = useState(false);
   const [sumtotalBasicos, setSumtotalBasicos] = useState(0);
-  const [sumtotalGestion, setSumtotalGestion] = useState(0);
-  const [sumtotalOtros, setSumTotalOtros] = useState(0);
-  const [sumBasico, setSumBasico] = useState({
-    docencia: 0,
-    desarrollo: 0,
-    coordinacion: 0,
-    coordinaciod: 0,
-    coordinacioc: 0,
-    cartera: 0,
-    mercadeo: 0,
-    administrativo: 0,
-    cultivo: 0,
-    apoyo: 0,
-    juridica: 0,
-    vice: 0,
-  });
-  const [sumGestion, setSumGestion] = useState({
-    vicea: 0,
-    cont1: 0,
-    cont2: 0,
-    aux: 0,
-    tesoreria: 0,
-  });
+  const [sumTotalOtros, setSumTotalOtros] = useState(0);
 
-  const [sumOtros, setSumOtros] = useState({
-    aulaTeams: 0,
-    aulasist: 0,
-    aulasencilla: 0,
-    aulapost: 0,
-    auditorio: 0,
-    publicidad: 0,
-    costocert: 0,
-    transport: 0,
-    refri: 0,
-  });
+  // Estos son para los costoso fijos
+  const [sumBasico, setSumBasico] = useState({});
+
+  //Estos son para los costos varibles
+  const [sumOtros, setSumOtros] = useState({});
+
+  //Poner en el localSotrage los valores predeterminados de los precios predeterminados.
+
+  if (localStorage.getItem("PU") === null) {
+    localStorage.setItem(
+      "PU",
+      JSON.stringify({
+        docencia: 917,
+        desarrollo: 917,
+        coordinacion: 617,
+        coordinaciod: 948,
+        coordinacioc: 600,
+        cartera: 250,
+        mercadeo: 712,
+        administrativo: 169,
+        cultivo: 523,
+        apoyo: 250,
+        juridica: 758,
+        vice: 1039,
+        vicea: 501,
+        cont1: 476,
+        cont2: 626,
+        aux: 234,
+        tesoreria: 301,
+        aulaTeams: 104,
+        aulasist: 1211,
+        aulasencilla: 792,
+        aulapost: 1030,
+        auditorio: 2734,
+        publicidad: 712,
+        costocert: 1,
+        transport: 1,
+        refri: 1,
+      })
+    );
+  }
 
   //Actualiza el estado de  sumbasico cuando hay un cambio en el imput del grupo "basico"
   const handleChangeBasico = (e) => {
     const { name, value } = e.target;
     setSumBasico((prevState) => ({
-      ...prevState,
-      [name]: value || 0,
-    }));
-  };
-
-  //Actualiza el estado de  sumGestion cuando hay un cambio en el imput del grupo "gestion"
-  const handleChangeGestion = (e) => {
-    const { name, value } = e.target;
-    setSumGestion((prevState) => ({
       ...prevState,
       [name]: value || 0,
     }));
@@ -74,7 +75,6 @@ function App() {
       ...prevState,
       [name]: value || 0,
     }));
-    console.table(sumOtros);
   };
 
   //para abrir o cerrar la ventana de nuevo usuario
@@ -89,49 +89,36 @@ function App() {
     setclientList(!clientList);
   };
 
+  //Para abrir o cerrar la ventana de listas de Parametro
+  const toogleClientParameter = (e) => {
+    e.preventDefault();
+    setParamWindows(!paramWindow);
+  };
+
   // se usa useEffect para que cada vez que cambia el valor de input se haga la suma total
-
   useEffect(() => {
-    // const sumtotbasico = (sumBasico) =>
-    //   Object.values(sumBasico).reduce((a, b) => a + b);
-    const sumtotbasico =
-      parseFloat(sumBasico.docencia) +
-      parseFloat(sumBasico.desarrollo) +
-      parseFloat(sumBasico.coordinacion) +
-      parseFloat(sumBasico.coordinaciod) +
-      parseFloat(sumBasico.coordinacioc) +
-      parseFloat(sumBasico.cartera) +
-      parseFloat(sumBasico.mercadeo) +
-      parseFloat(sumBasico.administrativo) +
-      parseFloat(sumBasico.cultivo) +
-      parseFloat(sumBasico.apoyo) +
-      parseFloat(sumBasico.juridica) +
-      parseFloat(sumBasico.vice);
-    setSumtotalBasicos(sumtotbasico);
+    //Funcion de suma de elementos de objetos
+    function sum(obj) {
+      var sum = 0;
+      for (var el in obj) {
+        console.log("el", el);
+        console.log("Json", JSON.parse(localStorage.getItem("PU"))[el]);
+        if (obj.hasOwnProperty(el)) {
+          sum +=
+            parseFloat(obj[el]) * JSON.parse(localStorage.getItem("PU"))[el];
+        }
+      }
+      return sum;
+    }
 
-    const sumtotGestion =
-      parseFloat(sumGestion.vicea) +
-      parseFloat(sumGestion.cont1) +
-      parseFloat(sumGestion.cont2) +
-      parseFloat(sumGestion.aux) +
-      parseFloat(sumGestion.tesoreria);
-    setSumtotalGestion(sumtotGestion);
+    //Para sumar Basicos
+    setSumtotalBasicos(sum(sumBasico));
 
-    const constSumOtro =
-      parseFloat(sumOtros.aulaTeams) +
-      parseFloat(sumOtros.aulasist) +
-      parseFloat(sumOtros.aulasencilla) +
-      parseFloat(sumOtros.aulapost) +
-      parseFloat(sumOtros.auditorio) +
-      parseFloat(sumOtros.publicidad) +
-      parseFloat(sumOtros.costocert) +
-      parseFloat(sumOtros.transport) +
-      parseFloat(sumOtros.refri);
+    //Para sumar Otros
+    setSumTotalOtros(sum(sumOtros));
+  }, [sumBasico, sumOtros]);
 
-    setSumTotalOtros(constSumOtro);
-  }, [sumBasico, sumGestion, sumOtros]);
-
-  const value = { toogleClient, toogleClientList };
+  const value = { toogleClient, toogleClientList, toogleClientParameter };
 
   return (
     <genContext.Provider value={value}>
@@ -145,7 +132,7 @@ function App() {
               <li onClick={(e) => toogleClientList(e)}>
                 <button>Clientes</button>
               </li>
-              <li>
+              <li onClick={(e) => toogleClientParameter(e)}>
                 <button>Parametros</button>
               </li>
             </ul>
@@ -162,7 +149,7 @@ function App() {
                 </button>
               </div>
               <div className="groupnames">
-                <h2>Basicos </h2>
+                <h2>Costos Fijos </h2>
               </div>
               <div className="divider">
                 <div className="inputLine">
@@ -312,160 +299,157 @@ function App() {
                   </div>
                 </div>
               </div>
-              <div className="groupnames">
-                <h2>Gestion Financiera, contable y tesoreria </h2>
-              </div>
-              <div className="divider">
-                <div className="inputLine">
-                  <label>Vicerrectoria Administrativa y Financieras: </label>
-                  <div className="boxpart">
-                    <input
-                      name="vicea"
-                      type="number"
-                      onChange={(e) => handleChangeGestion(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
 
-                <div className="inputLine">
-                  <label>Contador 1: </label>
-                  <div className="boxpart">
-                    <input
-                      name="cont1"
-                      type="number"
-                      onChange={(e) => handleChangeGestion(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
+              <div className="inputLine">
+                <label>Vicerrectoria Administrativa y Financieras: </label>
+                <div className="boxpart">
+                  <input
+                    name="vicea"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
                 </div>
-                <div className="inputLine">
-                  <label>Contador 2: </label>
-                  <div className="boxpart">
-                    <input
-                      name="cont2"
-                      type="number"
-                      onChange={(e) => handleChangeGestion(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
+              </div>
+
+              <div className="inputLine">
+                <label>Contador 1: </label>
+                <div className="boxpart">
+                  <input
+                    name="cont1"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
                 </div>
-                <div className="inputLine">
-                  <label>Auxiliar Contable: </label>
-                  <div className="boxpart">
-                    <input
-                      name="aux"
-                      type="number"
-                      onChange={(e) => handleChangeGestion(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
+              </div>
+              <div className="inputLine">
+                <label>Contador 2: </label>
+                <div className="boxpart">
+                  <input
+                    name="cont2"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
                 </div>
-                <div className="inputLine">
-                  <label>Tesoreria: </label>
-                  <div className="boxpart">
-                    <input
-                      name="tesoreria"
-                      type="number"
-                      onChange={(e) => handleChangeGestion(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
+              </div>
+              <div className="inputLine">
+                <label>Auxiliar Contable: </label>
+                <div className="boxpart">
+                  <input
+                    name="aux"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Tesoreria: </label>
+                <div className="boxpart">
+                  <input
+                    name="tesoreria"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+
+              <div className="inputLine">
+                <label>Aula por Teams</label>
+                <div className="boxpart">
+                  <input
+                    name="aulaTeams"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Aula de sistemas</label>
+                <div className="boxpart">
+                  <input
+                    name="aulasist"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Aula sencilla</label>
+                <div className="boxpart">
+                  <input
+                    name="aulasencilla"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Aula postgrado (Especiales): </label>
+                <div className="boxpart">
+                  <input
+                    name="aulapost"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Auditorio: </label>
+                <div className="boxpart">
+                  <input
+                    name="auditorio"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Publicidad </label>
+                <div className="boxpart">
+                  <input
+                    name="publicidad"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>minutos</h7>
+                </div>
+              </div>
+              <div className="inputLine">
+                <label>Costo certificion: </label>
+                <div className="boxpart">
+                  <input
+                    name="costocert"
+                    type="number"
+                    onChange={(e) => handleChangeBasico(e)}
+                    placeholder="0"
+                  ></input>
+                  <h7>Total</h7>
                 </div>
               </div>
               <div className="groupnames">
-                <h2>Otros </h2>
+                <h2>Costos Variables </h2>
               </div>
               <div className="divider">
-                <div className="inputLine">
-                  <label>Aula por Teams</label>
-                  <div className="boxpart">
-                    <input
-                      name="aulaTeams"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Aula de sistemas</label>
-                  <div className="boxpart">
-                    <input
-                      name="aulasist"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Aula sencilla</label>
-                  <div className="boxpart">
-                    <input
-                      name="aulasencilla"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Aula postgrado (Especiales): </label>
-                  <div className="boxpart">
-                    <input
-                      name="aulapost"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Auditorio: </label>
-                  <div className="boxpart">
-                    <input
-                      name="auditorio"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Publicidad </label>
-                  <div className="boxpart">
-                    <input
-                      name="publicidad"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
-                <div className="inputLine">
-                  <label>Costo certificion: </label>
-                  <div className="boxpart">
-                    <input
-                      name="costocert"
-                      type="number"
-                      onChange={(e) => handleChangeOtros(e)}
-                      placeholder="0"
-                    ></input>
-                    <h7>minutos</h7>
-                  </div>
-                </div>
                 <div className="inputLine">
                   <label>Transporte y alimentación: </label>
                   <div className="boxpart">
@@ -475,7 +459,7 @@ function App() {
                       onChange={(e) => handleChangeOtros(e)}
                       placeholder="0"
                     ></input>
-                    <h7>minutos</h7>
+                    <h7>Total</h7>
                   </div>
                 </div>
                 <div className="inputLine">
@@ -487,7 +471,7 @@ function App() {
                       onChange={(e) => handleChangeOtros(e)}
                       placeholder="0"
                     ></input>
-                    <h7>minutos</h7>
+                    <h7>Total</h7>
                   </div>
                 </div>
               </div>
@@ -501,12 +485,33 @@ function App() {
           </div>
           <div className=" rightmaincol col-4  p-0">
             <div className="totalcost">
-              <h3>Basicos: {sumtotalBasicos} COP</h3>
-              <h3>Gestion: {sumtotalGestion} COP </h3>
-              <h3>Otros: {sumtotalOtros} COP</h3>
-              <br />
+              <div>
+                <h3>Fijos: </h3>
+                <h3>
+                  ${" "}
+                  {sumtotalBasicos
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  COP
+                </h3>
+              </div>
+              <div>
+                <h3>Variables: </h3>
+                <h3>
+                  ${" "}
+                  {sumTotalOtros
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                  COP
+                </h3>
+              </div>
               <h3 id="total">Total:</h3>
-              <h2>{sumtotalBasicos + sumtotalGestion + sumtotalOtros}</h2>
+              <h2>
+                ${" "}
+                {(sumtotalBasicos + sumTotalOtros)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </h2>
               <h2>COP</h2>
               <button> Genera Cotizacion</button>
             </div>
@@ -514,6 +519,7 @@ function App() {
         </div>
         {userInput && <UserWindow></UserWindow>}
         {clientList && <UserList></UserList>}
+        {paramWindow && <Parametros></Parametros>}
       </div>
     </genContext.Provider>
   );

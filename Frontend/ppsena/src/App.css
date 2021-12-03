@@ -234,3 +234,24 @@ h1 {
   display: flex;
   align-items: center;
 }
+
+.paramContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.paramContent select {
+  width: 40%;
+  background-color: transparent;
+  border-color: rgb(45, 47, 136);
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+#paramLine {
+  height: 70%;
+}
