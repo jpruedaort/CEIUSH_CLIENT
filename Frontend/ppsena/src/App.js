@@ -140,13 +140,20 @@ function App() {
         </div>
         <div className="underrow row ">
           <div className=" leftmaincol col-8  p-0">
-            <h3>Información</h3>
             <form className="userInput">
               <div className="inputLine" id="btnLine">
                 <button onClick={(e) => toogleClient(e)}>
                   {" "}
                   Nuevo cliente{" "}
                 </button>
+              </div>
+              <br></br>
+              <br></br>
+              <div className="inputLine" id="btnLine">
+                <h1>Seleccionar cliente: </h1>
+              </div>
+              <div className="inputLine" id="btnLine">
+                <select></select>
               </div>
               <div className="groupnames">
                 <h2>Costos Fijos </h2>
